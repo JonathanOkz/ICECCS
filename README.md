@@ -28,5 +28,6 @@ lots consumed newest-first (LIFO); a challenge before the deadline escrows only
 the still-attributable residual. A pre-challenge targets a predicted transfer
 id: `submitTransfer` intercepts it into escrow, while a pre-challenged standard
 `transfer`/`transferFrom` reverts — `true` always means the recipient was
-credited (strict ERC-20). Five of seven validator votes decide a proof;
-review-window expiry without an Accept decision makes release possible.
+credited (strict ERC-20). A deployment-time supermajority quorum of validators
+decides a proof; review-window expiry without an Accept decision makes release
+possible.
