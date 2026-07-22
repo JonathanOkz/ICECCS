@@ -3,21 +3,27 @@ src = "src"
 out = "out"
 test = "test"
 script = "script"
-libs = ["lib"]
+libs = ["dependencies"]
+auto_detect_remappings = false
+remappings = [
+    "@openzeppelin/contracts/=dependencies/@openzeppelin-contracts-4.9.4/",
+    "forge-std/=dependencies/forge-std-1.16.1/src/",
+]
 solc_version = "0.8.36"
 optimizer = true
 optimizer_runs = 200
 via_ir = true
 evm_version = "shanghai"
-
-[profile.experiment]
-isolate = true
-chain_id = 31337
-gas_limit = 30_000_000_000
-block_gas_limit = 30_000_000_000
-fs_permissions = [{ access = "read-write", path = "./results" }]
+fs_permissions = []
 
 [fmt]
 line_length = 100
 tab_width = 4
 bracket_spacing = true
+
+[dependencies]
+forge-std = "1.16.1"
+"@openzeppelin-contracts" = "4.9.4"
+
+[soldeer]
+remappings_generate = false

@@ -34,9 +34,9 @@ possible.
 
 ## Deploying
 
-`script/Deploy.s.sol` deploys the whole application — `CAFToken` (which creates
-`ChallengeRegistry` and `ValidatorCommittee`) plus an optional `ReferenceERC20`
-baseline — from environment configuration, and prints the deployed addresses.
+`script/Deploy.s.sol` deploys the whole application — `CAFToken`, which creates
+`ChallengeRegistry` and `ValidatorCommittee` — from environment configuration
+and prints the deployed addresses.
 
 Set the parameters, then run the script. The broadcasting account is supplied by
 Forge (`--account <name>`, `--private-key <key>`, or `--ledger`):
@@ -49,7 +49,7 @@ export CAF_REVIEW_WINDOW=172800          # seconds (0 < w ≤ 3650 days)
 export CAF_CHALLENGERS=0xC1,0xC2         # comma-separated authorised challengers
 export CAF_VALIDATORS=0xD1,0xD2,0xD3,0xD4,0xD5,0xD6,0xD7
 export CAF_QUORUM=5                       # 3·quorum > 2·validators
-# optional: CAF_NAME, CAF_SYMBOL, CAF_DEPLOY_REFERENCE=true
+# optional: CAF_NAME, CAF_SYMBOL
 
 forge script script/Deploy.s.sol:Deploy \
   --rpc-url "$RPC_URL" --account deployer --broadcast
@@ -58,3 +58,15 @@ forge script script/Deploy.s.sol:Deploy \
 Drop `--broadcast` for a local simulation. The `CAFToken` constructor validates
 every parameter — non-zero holder, bounded windows, non-empty distinct
 membership sets, supermajority quorum — and reverts with a precise error.
+
+## Dependencies
+
+Install the exact dependency revisions pinned in `soldeer.lock` after cloning:
+
+```bash
+forge soldeer install
+```
+
+Soldeer keeps downloaded sources under the ignored `dependencies/` directory. Run
+`forge soldeer clean` to remove them locally; no third-party source is versioned in
+this repository.

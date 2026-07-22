@@ -1,15 +1,18 @@
+# Build outputs and per-run artifacts
 /out/
 /cache/
 /broadcast/
+/dependencies/
 /test/
-/results/
-/pythons/
 /campaign/
-/lib/forge-std/
-/src/ReferenceERC20.sol
 
+# Removed or local-only tooling.
+/pythons/
+
+# Secrets
 .env
 .env.*
+!**/.env.example
 
 __pycache__/
 *.py[cod]
